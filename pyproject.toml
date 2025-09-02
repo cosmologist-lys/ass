@@ -1,0 +1,7 @@
+[project]
+name = "ass"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.1"
+dependencies = ["pillow>=11.3.0", "pyautogui>=0.9.54", "pygetwindow>=0.0.9"]
