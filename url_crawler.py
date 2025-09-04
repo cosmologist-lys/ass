@@ -55,9 +55,11 @@ def main():
     print(f"将巡检 {len(URL_LIST)} 个URL，完整周期为 {Z_SECONDS} 秒。")
     print("[!] 请注意：请将Chrome浏览器最大化放置在主屏幕上。")
 
+    JOB_COUNT = 0
+
     while True:
         cycle_start_time = time.time()
-        print(f"\n--- {time.strftime('%Y-%m-%d %H:%M:%S')} | 开始新一轮巡检 ---")
+        print(f"\n--- {time.strftime('%Y-%m-%d %H:%M:%S')} | 开始新一轮巡检,当前循环次数 {JOB_COUNT} ---")
 
         for i, url in enumerate(URL_LIST):
             print(f"\n[任务 {i+1}/{len(URL_LIST)}] 正在处理 URL: {url}")
@@ -67,6 +69,9 @@ def main():
                 if not target_window:
                     print("  [!] 警告：未找到浏览器窗口，跳过此URL。")
                     continue
+                
+                # 睡5s,让我有时间把鼠标聚焦到brave上
+                time.sleep(5)
                 
                 # 1. 激活并导航
                 ewmh.setActiveWindow(target_window)
@@ -92,6 +97,8 @@ def main():
 
             except Exception as e:
                 print(f"  [!] 处理URL {url} 时发生意外错误: {e}")
+
+        JOB_COUNT += 1
         
         # 5. 计算并等待至完整周期 (z秒)
         cycle_end_time = time.time()

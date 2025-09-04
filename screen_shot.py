@@ -13,7 +13,7 @@ from PIL import Image, ImageDraw, ImageFont
 #FONT_PATH = "/usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc"
 FONT_PATH = "/usr/share/fonts/adobe-source-han-sans/SourceHanSansCN-Bold.otf"
 FONT_SIZE = 30                              # 水印文字大小
-WATERMARK_TEXT_STATIC = "QWCSSC 刘雨松"     # 水印中的静态文字
+WATERMARK_TEXT_STATIC = "QWCSSC  刘雨松 "     # 水印中的静态文字
 WATERMARK_ANGLE = 30                        # 水印旋转角度 (逆时针)
 WATERMARK_OPACITY = 25                      # 水印不透明度 (0-255之间, 数值越小越透明)
 WATERMARK_SPACING_X = 400                   # 水印在横向上的间距
@@ -69,7 +69,7 @@ def capture_and_save():
         save_path.mkdir(parents=True, exist_ok=True)
         
         timestamp = time.strftime("%Y%m%d-%H%M%S")
-        filename = save_path / f"capture-{timestamp}.png"
+        filename = save_path / f"f-{timestamp}.png"
         
         screenshot_with_watermark.save(filename)
         print(f"  [+] 截图成功！已保存至: {filename}")
